@@ -61,7 +61,7 @@ You can check the [FIELDS.md](https://gitlab.com/restcountries/restcountries/-/b
 
 Below are described the REST endpoints available that you can use to search for countries
 
-## Latest added Enpoint
+## Latest Added Endpoint
 
 ### Independent
 
