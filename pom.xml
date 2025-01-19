@@ -3,76 +3,73 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Project coordinates -->
     <groupId>dev.amatos.restcountries</groupId>
     <artifactId>dev.amatos.restcountries</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
+    <!-- Properties define versions and configuration settings -->
     <properties>
+        <!-- Basic settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
-        <micronaut.version>4.2.3</micronaut.version>
-        <micronaut.openapi.version>4.2.3</micronaut.openapi.version>
+        
+        <!-- Micronaut version - using a stable version -->
+        <micronaut.version>3.10.1</micronaut.version>
         <exec.mainClass>dev.amatos.restcountries.Application</exec.mainClass>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.micronaut</groupId>
-                <artifactId>micronaut-bom</artifactId>
-                <version>${micronaut.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
+    <!-- Repository configuration to find Micronaut artifacts -->
     <repositories>
+        <!-- Central Maven repository -->
         <repository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
         </repository>
+        <!-- Sonatype snapshots repository -->
         <repository>
-            <id>micronaut</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>micronaut</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencies>
-        <!-- Micronaut Dependencies -->
+        <!-- Micronaut Core Dependencies -->
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-inject</artifactId>
+            <version>${micronaut.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.micronaut.validation</groupId>
+            <groupId>io.micronaut</groupId>
             <artifactId>micronaut-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-http-server-netty</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>micronaut-http-client</artifactId>
+            <version>${micronaut.version}</version>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-runtime</artifactId>
+            <version>${micronaut.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+            <version>${micronaut.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-client</artifactId>
+            <version>${micronaut.version}</version>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-management</artifactId>
+            <version>${micronaut.version}</version>
         </dependency>
 
         <!-- Logging -->
@@ -82,7 +79,7 @@
             <version>1.4.11</version>
         </dependency>
 
-        <!-- Testing -->
+        <!-- Testing Dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -109,7 +106,7 @@
             <version>2.2.10</version>
         </dependency>
 
-        <!-- Additional Dependencies -->
+        <!-- JSON Processing -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -119,20 +116,18 @@
 
     <build>
         <plugins>
-            <!-- Micronaut Maven Plugin -->
-            <plugin>
-                <groupId>io.micronaut.maven</groupId>
-                <artifactId>micronaut-maven-plugin</artifactId>
-                <version>${micronaut.version}</version>
-            </plugin>
-
-            <!-- Maven Compiler Plugin -->
+            <!-- Maven Compiler Plugin Configuration -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
                 <configuration>
-                    <release>${java.version}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>io.micronaut</groupId>
@@ -140,24 +135,15 @@
                             <version>${micronaut.version}</version>
                         </path>
                         <path>
-                            <groupId>io.micronaut.validation</groupId>
+                            <groupId>io.micronaut</groupId>
                             <artifactId>micronaut-validation</artifactId>
                             <version>${micronaut.version}</version>
                         </path>
-                        <path>
-                            <groupId>io.micronaut.openapi</groupId>
-                            <artifactId>micronaut-openapi</artifactId>
-                            <version>${micronaut.openapi.version}</version>
-                        </path>
                     </annotationProcessorPaths>
-                    <compilerArgs>
-                        <arg>-Amicronaut.processing.group=dev.amatos.restcountries</arg>
-                        <arg>-Amicronaut.processing.module=dev.amatos.restcountries</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- Maven Shade Plugin -->
+            <!-- Maven Shade Plugin for creating the executable jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
