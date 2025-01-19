@@ -10,15 +10,15 @@
   <parent>
     <groupId>io.micronaut</groupId>
     <artifactId>micronaut-parent</artifactId>
-    <version>2.0.1</version>
+    <version>3.10.4</version>
   </parent>
 
   <properties>
     <jdk.version>17</jdk.version>
     <!-- If you are building with JDK 9 or higher, you can uncomment the lines below to set the release version -->
     <release.version>17</release.version>
-    <micronaut.version>2.0.1</micronaut.version>
-    <micronautopenapi.version>2.0.0</micronautopenapi.version>
+    <micronaut.version>3.10.4</micronaut.version>
+    <micronautopenapi.version>6.13.2</micronautopenapi.version>
     <exec.mainClass>dev.amatos.restcountries.Application</exec.mainClass>
     <java.version>17</java.version>
   </properties>
@@ -104,7 +104,7 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-client</artifactId>
-      <version>6.0.1.Final</version>
+      <version>6.2.11.Final</version>
     </dependency>
     <dependency>
       <groupId>io.swagger.core.v3</groupId>
