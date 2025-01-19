@@ -14,6 +14,28 @@
         <exec.mainClass>dev.amatos.restcountries.Application</exec.mainClass>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>micronaut</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>micronaut</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
         <!-- Micronaut Dependencies -->
         <dependency>
@@ -93,7 +115,7 @@
         <plugins>
             <!-- Micronaut Maven Plugin -->
             <plugin>
-                <groupId>io.micronaut.build</groupId>
+                <groupId>io.micronaut.maven</groupId>
                 <artifactId>micronaut-maven-plugin</artifactId>
                 <version>${micronaut.version}</version>
                 <executions>
