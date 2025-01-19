@@ -44,7 +44,7 @@
             <version>${micronaut.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.micronaut</groupId>
+            <groupId>io.micronaut.validation</groupId>
             <artifactId>micronaut-validation</artifactId>
             <version>${micronaut.version}</version>
         </dependency>
@@ -134,7 +134,7 @@
                             <version>${micronaut.version}</version>
                         </path>
                         <path>
-                            <groupId>io.micronaut</groupId>
+                            <groupId>io.micronaut.validation</groupId>
                             <artifactId>micronaut-validation</artifactId>
                             <version>${micronaut.version}</version>
                         </path>
